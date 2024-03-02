@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Catch</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>TC</td>
+            <td><input type="text" id="tc"></td>
+        </tr>
+        <tr>
+            <td>
+             <div id="uyarı"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Ad Soyad</td>
+            <td><input type="text" id="adSoyad"></td>
+        </tr>
+    </table>
+    <script>
+        let tc=document.getElementById("tc")
+        let uyarı=document.getElementById("uyarı")
+        let adSoyad=document.getElementById("adSoyad")
+
+        tc.onblur=()=>{
+            try{
+                if(isNaN(tc.value)){
+                    throw "Hatalı Karakter"
+                }
+                if(tc.value.length>11){
+                    throw "En fazla 11 karakter girebilirsiniz."
+                    
+                }
+                if(tc.value.length<11){
+                    throw "11 Karakterden az olamaz."
+                }
+            }
+            catch(e){
+                uyarı.textContent=e
+                tc.focus()
+            }
+        }
+        adSoyad.onfocus=()=>{
+            uyarı.textContent=""
+        }
+    </script>
+</body>
+</html>
